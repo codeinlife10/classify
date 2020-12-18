@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/knn-classifier"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="console"></div>
+    <img id="img" crossorigin src="../JlUvsxa.jpg" width="227" height="227"/>
+    <!-- get input -->
+      <video
+        style="display: block; padding-bottom: 10px"
+        autoplay
+        playsinline
+        muted
+        id="webcam"
+        width="224"
+        height="224"
+      ></video>
+      <button id="class-a">Add persons</button>
+      <button id="class-b">Add animals</button>
+      <button id="class-c">Add object</button>
+    <!-- Load index.js after the content of the page -->
+    <script src="../index.js"></script>
+  </body>
+</html>
