@@ -7,23 +7,50 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/knn-classifier"></script>
     <title>Document</title>
+    <style>
+      .container{
+        display: flex;
+        justify-content: center;
+      }
+      .contain{
+        margin-right: 20px;
+      }
+      .console{
+        color: red;
+      }
+    </style>
   </head>
   <body>
-    <div id="console"></div>
-    <img id="img" crossorigin src="./images/JlUvsxa.jpg" width="227" height="227"/>
-    <!-- get input -->
-      <video
-        style="display: block; padding-bottom: 10px"
-        autoplay
-        playsinline
-        muted
-        id="webcam"
-        width="224"
-        height="224"
-      ></video>
-      <button id="class-a">Add persons</button>
-      <button id="class-b">Add animals</button>
-      <button id="class-c">Add object</button>
+    <div class="container">
+      <!-- get input -->
+      <div class="contain">
+        <video
+          style="display: block; padding-bottom: 10px"
+          autoplay
+          playsinline
+          muted
+          id="webcam"
+          width="265"
+          height="224"
+        ></video> 
+        <div style="margin-bottom:10px" id="console"></div>
+        <button id="class-a">Add persons</button>
+        <button id="class-b">Add animals</button>
+        <button id="class-c">Add object</button> 
+       
+      </div>
+      <div class="tutorial">
+        <h1 style="color: red;">How to use</h1>
+        <ol>
+          <li>Đưa hình ảnh muốn training lên camera</li>
+          <li>Nhấn vào nút để phân loại hình ảnh đó</li>
+          <li>Đưa 1 đồ vật bất kì lên camera</li>
+          <li>Nhận kết quả đồ vật vừa đưa lên thuộc loại nào cũng như mức độ chính xác</li>
+        </ol>
+      </div>
+    </div>
+   
+  </div>
     <!-- Load index.js after the content of the page -->
     <script src="./js/index.js"></script>
   </body>

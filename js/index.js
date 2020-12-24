@@ -11,14 +11,13 @@ async function app() {
 
   // Create an object from Tensorflow.js data API which could capture image
   // from the web camera as Tensor.
-  const webcam = await tf.data.webcam(webcamElement);
+  const webcam = await tf.data.webcam(webcamElement) ;
 
   // Reads an image from the webcam and associates it with a specific class
   // index.
-  const addExample = async (classId) => {
+  const addExample = async (classId,data) => {
     // Capture an image from the web camera.
     const img = await webcam.capture();
-
     // Get the intermediate activation of MobileNet 'conv_preds' and pass that
     // to the KNN classifier.
     const activation = net.infer(img, true);
@@ -49,7 +48,6 @@ async function app() {
       const activation = net.infer(img, "conv_preds");
       // Get the most likely class and confidence from the classifier module.
       const result = await classifier.predictClass(activation);
-      console.log(result);
       const classes = ["Persons", "Animals", "Objects"];
       document.getElementById("console").innerText = `
           prediction: ${classes[result.label]}\n
@@ -63,34 +61,8 @@ async function app() {
   }
 }
 
-let net1;
-async function app1() {
-  console.log("Loading mobilenet..");
-
-  // Load the model.
-  net = await mobilenet.load();
-  console.log("Successfully loaded model");
-
-  // Create an object from Tensorflow.js data API which could capture image
-  // from the web camera as Tensor.
-  const webcam = await tf.data.webcam(webcamElement);
-  while (true) {
-    const img = await webcam.capture();
-    const result = await net.classify(img);
-console.log(result);
-    document.getElementById("console").innerText = `
-        prediction: ${result[0].className}\n
-        probability: ${result[0].probability}
-      `;
-    // Dispose the tensor to release the memory.
-    img.dispose();
-
-    // Give some breathing room by waiting for the next animation frame to
-    // fire.
-    await tf.nextFrame();
-  }
-}
-//training objects
+//training objects and compare 
 app();
-//compare data
-// app1();
+
+
+
